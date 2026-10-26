@@ -1,0 +1,8 @@
+node_modules/
+.pnpm-store/
+.vite/
+dist/
+.env
+.env.*
+!.env.example
+.DS_Store
