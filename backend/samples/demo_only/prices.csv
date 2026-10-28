@@ -1,0 +1,3 @@
+customer_id,sku,unit_price,currency
+DEMO-C-001,DEMO-RICE-001,80.00,INR
+DEMO-C-002,DEMO-OIL-001,1250.00,INR

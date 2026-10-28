@@ -1,0 +1,2 @@
+order_id,customer_id,order_date,status,sku,quantity,unit,unit_price,currency
+DEMO-ORDER-HIST-001,DEMO-C-001,2026-01-15,delivered,DEMO-RICE-001,10,kg,80.00,INR

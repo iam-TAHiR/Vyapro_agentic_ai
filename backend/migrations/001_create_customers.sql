@@ -1,0 +1,7 @@
+CREATE TABLE customers (
+    id VARCHAR(64) NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    credit_limit_minor BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    credit_used_minor BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    credit_currency CHAR(3) NOT NULL DEFAULT 'INR'
+) ENGINE=InnoDB

@@ -1,3 +1,5 @@
+import { useI18n } from '../services/i18n'
 export function LoadingSkeleton() {
-  return <div className="skeleton" aria-label="Loading orders" role="status"><span>Loading development orders…</span><i /><i /><i /></div>
+  const { t } = useI18n()
+  return <div className="skeleton" aria-label={t('Loading orders')} role="status"><span>{t('Loading orders…')}</span><i /><i /><i /></div>
 }

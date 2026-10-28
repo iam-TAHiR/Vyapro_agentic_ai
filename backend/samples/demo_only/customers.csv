@@ -1,0 +1,3 @@
+customer_id,customer_name,credit_limit,credit_used,currency
+DEMO-C-001,Sample Corner Shop,50000.00,0.00,INR
+DEMO-C-002,Sample Low Credit Shop,1000.00,900.00,INR

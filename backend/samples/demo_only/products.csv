@@ -1,0 +1,3 @@
+sku,product_name,quantity_on_hand,unit,unit_price,currency,pack_size,pack_unit,aliases
+DEMO-RICE-001,Sample Basmati Rice,120,kg,85.00,INR,5,kg,basmati;long grain rice
+DEMO-OIL-001,Sample Cooking Oil,2,l,1200.00,INR,1,l,cooking oil

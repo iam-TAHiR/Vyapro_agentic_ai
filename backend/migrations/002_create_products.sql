@@ -1,0 +1,9 @@
+CREATE TABLE products (
+    id VARCHAR(64) NOT NULL PRIMARY KEY,
+    sku VARCHAR(64) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    quantity_on_hand DECIMAL(14, 3) UNSIGNED NOT NULL DEFAULT 0,
+    unit VARCHAR(32) NOT NULL,
+    unit_price_minor BIGINT UNSIGNED NOT NULL,
+    price_currency CHAR(3) NOT NULL DEFAULT 'INR'
+) ENGINE=InnoDB

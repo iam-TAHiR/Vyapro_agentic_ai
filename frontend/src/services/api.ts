@@ -1,17 +1,12 @@
-/**
- * Shared transport utilities for the future confirmed API.
- *
- * Do not read VITE_API_BASE_URL until Flask URL and API contract are confirmed.
- * This module intentionally adds only safe, non-secret request headers; never
- * place keys, credentials, or LLM secrets in browser code or Vite variables.
- */
 export class ApiError extends Error {
   readonly status?: number
+  readonly code?: string
 
-  constructor(message: string, status?: number) {
+  constructor(message: string, status?: number, code?: string) {
     super(message)
     this.name = 'ApiError'
     this.status = status
+    this.code = code
   }
 }
 
@@ -26,20 +21,25 @@ export function createApiClient({ baseUrl, fetchImpl = fetch }: ApiClientOptions
       ...init,
       headers: {
         Accept: 'application/json',
-        ...(init.body ? { 'Content-Type': 'application/json' } : {}),
+        ...(init.body && !(typeof FormData !== 'undefined' && init.body instanceof FormData) ? { 'Content-Type': 'application/json' } : {}),
         ...init.headers,
       },
     })
 
-    if (!response.ok) {
-      throw new ApiError(`Request failed with status ${response.status}.`, response.status)
-    }
-
+    let body: unknown
     try {
-      return (await response.json()) as T
+      body = await response.json()
     } catch {
       throw new ApiError('The server response was not valid JSON.', response.status)
     }
+
+    if (!response.ok) {
+      const payload = body && typeof body === 'object' ? body as { error?: { message?: string; code?: string } } : {}
+      const error = payload.error
+      throw new ApiError(error?.message ?? `Request failed with status ${response.status}.`, response.status, error?.code)
+    }
+
+    return body as T
   }
 
   return { requestJson }

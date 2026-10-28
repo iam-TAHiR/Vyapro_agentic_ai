@@ -1,0 +1,3 @@
+ALTER TABLE products
+    ADD COLUMN pack_size DECIMAL(14, 3) NULL,
+    ADD COLUMN pack_unit VARCHAR(32) NULL
